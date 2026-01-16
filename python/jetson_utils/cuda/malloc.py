@@ -4,7 +4,7 @@ import numpy as np
 from jetson_utils import getLogger, NamedDict
 from . import cudaToNumpy, cudaToTorch, assert_cuda
 from cuda.bindings.runtime import *
-
+import math
 
 log = getLogger(__name__)
 
