@@ -3,6 +3,7 @@ import numpy as np
 
 from jetson_utils import getLogger, NamedDict
 from . import cudaToNumpy, cudaToTorch, assert_cuda
+import cuda.bindings.runtime import *
 
 
 log = getLogger(__name__)

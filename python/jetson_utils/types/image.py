@@ -1,7 +1,7 @@
 import io
 import numpy as np
 
-from jetson_utils import HAS_JETSON_UTILS_EXT, getLogger
+from jetson_utils import HAS_JETSON_UTILS_EXT, getLogger, cudaImage, cudaFromNumpy
 
 ImageTypes = (np.ndarray) # available image tensor types/loaders 
 ImageExtensions = ('.png', '.jpg', '.jpeg', '.tiff', '.bmp', '.gif')
@@ -83,11 +83,11 @@ def cuda_image(image):
     if isinstance(image, cudaImage):
         return image
         
-    if isinstance(image, PIL.Image.Image):
-        image = np.asarray(image)  # no copy
-        
     if isinstance(image, np.ndarray):
         return cudaFromNumpy(image)
+
+    if isinstance(image, PIL.Image.Image):
+        image = np.asarray(image)  # no copy
         
     if isinstance(image, torch.Tensor):
         input = input.to(memory_format=torch.channels_last)   # or tensor.permute(0, 3, 2, 1)

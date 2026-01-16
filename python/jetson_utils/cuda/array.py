@@ -22,7 +22,7 @@ def cudaToNumpy(ptr, shape, dtype):
     The pointer should have been allocated with cudaMallocManaged() or using cudaHostAllocMapped,
     and the user is responsible for any CPU/GPU synchronization (i.e. by using cudaStreams)
     """
-    array = np.ctypeslib.as_array(C.cast(ptr, C.POINTER(dtype_to_ctype(dtype))), shape=shape)
+    array = np.ctypeslib.as_array(C.cast(ptr, C.POINTER(np.ctypeslib.as_ctypes_type(dtype))), shape=shape)
     
     if dtype == np.float16:
         array.dtype = np.float16
