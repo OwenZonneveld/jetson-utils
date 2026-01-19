@@ -148,4 +148,4 @@ def logVerbose(*args, **kwargs):
 
 
 # enable this as the default logger type
-logging.setLoggerClass(Logger)
+# logging.setLoggerClass(Logger)
